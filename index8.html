@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Финансовый AI помощник — контроль долгов, подушка безопасности и план стабилизации</title>
+  <meta name="description" content="Внесите доходы, кредиты и регулярные траты — AI посчитает долговую нагрузку, финансовую устойчивость, подушку безопасности и подскажет план действий." />
+
+  <meta property="og:title" content="Финансовый AI помощник" />
+  <meta property="og:description" content="Индекс устойчивости, долговая нагрузка, подушка безопасности и план выхода в стабильность." />
+  <meta property="og:type" content="website" />
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {
+        if (document.scripts[j].src === r) { return; }
+      }
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a);
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107207334', 'ym');
+
+    ym(107207334, 'init', {
+      ssr:true,
+      webvisor:true,
+      clickmap:true,
+      ecommerce:"dataLayer",
+      referrer: document.referrer,
+      url: location.href,
+      accurateTrackBounce:true,
+      trackLinks:true
+    });
+  </script>
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/107207334" style="position:absolute; left:-9999px;" alt="" /></div>
+  </noscript>
+  <!-- /Yandex.Metrika counter -->
+
+  <style>
+    :root{
+      --bg:#f6f5ef;
+      --surface:#ffffff;
+      --surface-soft:#ecebdd;
+      --surface-olive:#dfe3d3;
+      --hero-dark:#1f5a34;
+      --hero-dark-2:#17482a;
+      --text:#1f1f1b;
+      --muted:#66685f;
+      --line:#d8dacd;
+      --accent:#214f31;
+      --accent-hover:#183c25;
+      --radius:18px;
+      --shadow:0 18px 40px rgba(22, 32, 20, .08);
+      --max:1180px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:var(--font);
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+    .top{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:20;
+      background:transparent;
+      border-bottom:1px solid rgba(255,255,255,.14);
+    }
+
+    .top .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:#fff;
+      font-weight:700;
+    }
+
+    .logo{
+      width:30px;
+      height:30px;
+      border-radius:8px;
+      background:rgba(255,255,255,.16);
+      border:1px solid rgba(255,255,255,.22);
+    }
+
+    .nav{
+      display:flex;
+      gap:22px;
+      color:rgba(255,255,255,.88);
+      font-size:14px;
+    }
+
+    .nav a:hover{opacity:.8}
+
+    .top-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 18px;
+      border-radius:0;
+      border:1px solid transparent;
+      cursor:pointer;
+      font-weight:600;
+      transition:.2s ease;
+      white-space:nowrap;
+      font:inherit;
+    }
+
+    .btn:hover{transform:translateY(-1px)}
+
+    .btn.primary{
+      background:#fff;
+      color:var(--text);
+      border-color:#fff;
+    }
+
+    .btn.primary:hover{background:#f3f3ee}
+
+    .btn.ghost{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.35);
+    }
+
+    .btn.ghost:hover{background:rgba(255,255,255,.08)}
+
+    .btn.outline-dark{
+      background:#fff;
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+
+    .btn.outline-dark:hover{background:#f8f8f3}
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 72% 28%, rgba(255,255,255,.16) 0 12%, transparent 13%),
+        radial-gradient(circle at 63% 18%, rgba(255,255,255,.10) 0 16%, transparent 17%),
+        radial-gradient(circle at 82% 24%, rgba(255,255,255,.20) 0 14%, transparent 15%),
+        linear-gradient(135deg, var(--hero-dark) 0%, #2a6a3e 45%, var(--hero-dark-2) 100%);
+      min-height:760px;
+      display:flex;
+      align-items:flex-start;
+      padding-top:96px;
+    }
+
+    .hero::before,
+    .hero::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      background:linear-gradient(145deg, rgba(255,255,255,.24), rgba(255,255,255,.06));
+      filter:blur(.2px);
+    }
+
+    .hero::before{
+      width:420px;
+      height:420px;
+      right:-40px;
+      top:30px;
+      opacity:.55;
+      clip-path:polygon(0 0, 100% 0, 70% 100%, 0 100%);
+    }
+
+    .hero::after{
+      width:320px;
+      height:320px;
+      right:180px;
+      top:80px;
+      opacity:.4;
+      clip-path:polygon(18% 0, 100% 0, 60% 100%, 0 100%);
+    }
+
+    .hero-inner{
+      position:relative;
+      z-index:2;
+      width:100%;
+      padding:78px 0 72px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .85fr;
+      gap:40px;
+      align-items:end;
+    }
+
+    .hero-copy{
+      max-width:650px;
+      color:#fff;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:18px;
+      font-size:14px;
+      color:rgba(255,255,255,.85);
+    }
+
+    h1{
+      margin:0 0 18px;
+      font-size:clamp(42px, 6vw, 68px);
+      line-height:1.02;
+      letter-spacing:-1.8px;
+      font-weight:800;
+    }
+
+    .lead{
+      max-width:560px;
+      margin:0 0 28px;
+      font-size:18px;
+      color:rgba(255,255,255,.88);
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .trust{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      color:rgba(255,255,255,.76);
+      font-size:14px;
+    }
+
+    .card{
+      background:var(--surface);
+      border:1px solid rgba(31,31,27,.08);
+      box-shadow:var(--shadow);
+    }
+
+    .form-card{
+      padding:24px;
+      max-width:440px;
+      margin-left:auto;
+    }
+
+    .form-title{
+      font-size:22px;
+      font-weight:700;
+      margin:0 0 8px;
+    }
+
+    .form-sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    label{
+      display:block;
+      font-size:12px;
+      color:var(--muted);
+      margin:14px 0 6px;
+    }
+
+    input, select, textarea{
+      width:100%;
+      min-height:48px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      padding:12px 14px;
+      border-radius:0;
+      outline:none;
+      font:inherit;
+    }
+
+    textarea{
+      min-height:92px;
+      resize:vertical;
+    }
+
+    input:focus, select:focus, textarea:focus{
+      border-color:#97a18d;
+    }
+
+    .tiny{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:12px;
+    }
+
+    section{padding:84px 0}
+
+    .section-kicker{
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:14px;
+    }
+
+    .section-title{
+      margin:0 0 12px;
+      font-size:clamp(34px, 4vw, 56px);
+      line-height:1.03;
+      letter-spacing:-1.4px;
+      font-weight:800;
+    }
+
+    .section-sub{
+      margin:0 0 28px;
+      max-width:760px;
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    .services-intro{
+      background:#fbfaf7;
+      border-top:1px solid #ecebdd;
+      border-bottom:1px solid #ecebdd;
+    }
+
+    .services-head{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      align-items:end;
+    }
+
+    .services-note{
+      color:var(--muted);
+      font-size:14px;
+      text-align:right;
+    }
+
+    .planning{background:var(--surface-olive)}
+
+    .planning-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:34px;
+      align-items:start;
+    }
+
+    .cards-row{
+      position:relative;
+      margin-top:26px;
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      background:#fff;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(31,31,27,.08);
+    }
+
+    .tile{
+      padding:30px 22px;
+      border-right:1px solid #ecebdd;
+      min-height:220px;
+    }
+
+    .tile:last-child{border-right:none}
+
+    .icon{
+      width:42px;
+      height:42px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      margin-bottom:18px;
+    }
+
+    .tile h3{
+      margin:0 0 10px;
+      font-size:22px;
+      line-height:1.1;
+    }
+
+    .tile p{
+      margin:0;
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    .photo-panel{
+      position:relative;
+      min-height:460px;
+      background:
+        linear-gradient(rgba(33,79,49,.18), rgba(33,79,49,.18)),
+        url('/mnt/data/photo_5891954029666351529_y.jpg') center/cover no-repeat;
+      clip-path:polygon(16% 0, 100% 0, 84% 100%, 0 100%);
+      box-shadow:var(--shadow);
+    }
+
+    .list-links{
+      margin-top:28px;
+      display:grid;
+      gap:14px;
+    }
+
+    .list-links div{
+      padding:14px 0;
+      border-bottom:1px solid rgba(31,31,27,.12);
+      font-weight:500;
+    }
+
+    .industries{background:#faf9f5}
+
+    .industries-grid{
+      display:grid;
+      grid-template-columns:.8fr 1fr 1fr;
+      gap:30px;
+      align-items:start;
+    }
+
+    .industries-col{
+      display:grid;
+      gap:12px;
+      color:var(--text);
+    }
+
+    .industries-col div{
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .how{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .step{
+      background:#fff;
+      border:1px solid #e3e5d8;
+      padding:24px;
+      min-height:220px;
+    }
+
+    .step .n{
+      display:inline-flex;
+      width:34px;
+      height:34px;
+      align-items:center;
+      justify-content:center;
+      background:var(--surface-olive);
+      margin-bottom:18px;
+      font-weight:700;
+    }
+
+    .step h4{
+      margin:0 0 8px;
+      font-size:20px;
+      line-height:1.1;
+    }
+
+    .step p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .proof{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+    }
+
+    .quote{
+      background:#fff;
+      border:1px solid #e3e5d8;
+      padding:28px;
+    }
+
+    .quote p{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    .who{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:600;
+    }
+
+    .avatar{
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      background:var(--surface-olive);
+      border:1px solid #d5d9ca;
+    }
+
+    .kpi{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid #d9dccf;
+      padding:10px 12px;
+      font-size:13px;
+      background:#fff;
+    }
+
+    details{
+      background:#fff;
+      border:1px solid #e3e5d8;
+      padding:18px 20px;
+    }
+
+    details summary{
+      cursor:pointer;
+      font-weight:600;
+    }
+
+    details p{
+      margin:12px 0 0;
+      color:var(--muted);
+    }
+
+    .final-cta{
+      background:var(--surface-olive);
+      padding:38px;
+    }
+
+    .footer{
+      padding:28px 0 40px;
+      border-top:1px solid #e3e5d8;
+      color:var(--muted);
+      font-size:13px;
+      background:#faf9f5;
+    }
+
+    .footer .row{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width: 1080px){
+      .hero-grid,
+      .planning-grid,
+      .industries-grid,
+      .proof,
+      .services-head{
+        grid-template-columns:1fr;
+      }
+
+      .form-card{
+        max-width:100%;
+        margin-left:0;
+      }
+
+      .cards-row{grid-template-columns:1fr}
+
+      .tile{
+        border-right:none;
+        border-bottom:1px solid #ecebdd;
+        min-height:auto;
+      }
+
+      .tile:last-child{border-bottom:none}
+
+      .how{grid-template-columns:1fr 1fr}
+
+      .services-note{text-align:left}
+
+      .photo-panel{
+        min-height:360px;
+        clip-path:none;
+      }
+    }
+
+    @media (max-width: 760px){
+      .nav{display:none}
+      .top-actions .btn.ghost{display:none}
+      .hero{min-height:auto}
+      .hero-inner{padding:56px 0 42px}
+      .grid2,
+      .how{grid-template-columns:1fr}
+      section{padding:64px 0}
+      .wrap{padding:0 18px}
+      h1{font-size:42px}
+      .section-title{font-size:34px}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="wrap">
+      <div class="row">
+        <div class="brand" role="banner">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <div style="font-size:14px; opacity:.95;">FinAI</div>
+            <div style="font-size:12px; color:rgba(255,255,255,.72); font-weight:600;">финансовый AI помощник</div>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Навигация">
+          <a href="#value">Возможности</a>
+          <a href="#features">Анализ</a>
+          <a href="#how">Как это работает</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <div class="top-actions">
+          <a class="btn ghost"
+             href="https://t.me/OxanaMikhaylova"
+             target="_blank"
+             onclick="ym(107207334,'reachGoal','telegram_click_header')">
+             Telegram
+          </a>
+          <button class="btn primary" onclick="scrollToLead(); ym(107207334,'reachGoal','click_header_cta');">
+            Получить доступ
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">Финансовый AI помощник</div>
+            <h1>Поймите свою финансовую устойчивость и получите понятный план действий</h1>
+            <p class="lead">
+              AI анализирует доходы, кредиты, обязательные платежи и регулярные траты,
+              чтобы показать реальную долговую нагрузку, подушку безопасности и шаги к стабильности.
+            </p>
+
+            <div class="hero-actions">
+              <button class="btn primary"
+                      onclick="scrollToLead(); ym(107207334,'reachGoal','click_hero_cta');">
+                Получить ранний доступ
+              </button>
+
+              <a class="btn ghost"
+                 href="https://t.me/OxanaMikhaylova"
+                 target="_blank"
+                 onclick="ym(107207334,'reachGoal','telegram_click')">
+                 Написать в Telegram
+              </a>
+            </div>
+
+            <div class="trust">
+              <span>KZT / RUB / USD / EUR</span>
+              <span>Кредиты и рассрочки</span>
+              <span>Доход по депозитам</span>
+            </div>
+          </div>
+
+          <aside class="card form-card" id="lead">
+            <div class="form-title">Ранний доступ + бесплатный разбор</div>
+            <p class="form-sub">Оставьте контакты — пришлём приглашение в тест и уточним ваш сценарий.</p>
+
+            <form id="leadForm">
+              <div class="grid2">
+                <div>
+                  <label for="name">Имя</label>
+                  <input id="name" name="name" placeholder="Оксана" autocomplete="name" required />
+                </div>
+                <div>
+                  <label for="contact">Телефон / Telegram / Email</label>
+                  <input id="contact" name="contact" placeholder="+7… / @username / email" required />
+                </div>
+              </div>
+
+              <div class="grid2">
+                <div>
+                  <label for="credits">Сколько кредитов сейчас?</label>
+                  <select id="credits" name="credits" required>
+                    <option value="" selected disabled>Выберите</option>
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2–3</option>
+                    <option>4+</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="currency">Основная валюта</label>
+                  <select id="currency" name="currency" required>
+                    <option value="" selected disabled>Выберите</option>
+                    <option value="KZT">KZT</option>
+                    <option value="RUB">RUB</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                  </select>
+                </div>
+              </div>
+
+              <label for="goal">Что важнее всего сейчас?</label>
+              <select id="goal" name="goal" required>
+                <option value="" selected disabled>Выберите</option>
+                <option value="stability">Понять устойчивость бюджета</option>
+                <option value="debts">Снизить долговую нагрузку</option>
+                <option value="safety">Собрать подушку безопасности</option>
+                <option value="leaks">Найти лишние траты</option>
+                <option value="plan">Получить план действий на месяц</option>
+              </select>
+
+              <label for="note">Коротко про ситуацию</label>
+              <textarea id="note" name="note" placeholder="Например: 2 кредита, есть рассрочка, хочу понять, сколько безопасно тратить в месяц."></textarea>
+
+              <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap;">
+                <button class="btn primary"
+                        type="submit"
+                        style="flex:1;"
+                        onclick="ym(107207334,'reachGoal','click_try_service')">
+                  Получить доступ
+                </button>
+
+                <a class="btn outline-dark"
+                   href="https://t.me/OxanaMikhaylova"
+                   target="_blank"
+                   onclick="ym(107207334,'reachGoal','telegram_click_form')">
+                   Telegram
+                </a>
+              </div>
+
+              <div class="tiny">
+                Нажимая «Получить доступ», вы соглашаетесь на обработку данных для связи по продукту.
+              </div>
+            </form>
+
+            <div id="formStatus" class="tiny" style="margin-top:10px;"></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="services-intro" id="value">
+      <div class="wrap">
+        <div class="services-head">
+          <div>
+            <div class="section-kicker">Возможности</div>
+            <h2 class="section-title">Чтобы понять вашу реальную финансовую ситуацию</h2>
+          </div>
+          <div class="services-note">
+            Индекс устойчивости, долговая нагрузка, подушка безопасности и персональный план действий
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="planning" id="features">
+      <div class="wrap">
+        <div class="planning-grid">
+          <div>
+            <h2 class="section-title">Финансовая картина без сложных таблиц</h2>
+
+            <div class="cards-row">
+              <div class="tile">
+                <div class="icon">📉</div>
+                <h3>Долговая нагрузка</h3>
+                <p>Покажем, сколько процентов дохода уходит на кредиты и рассрочки и насколько это безопасно.</p>
+              </div>
+
+              <div class="tile">
+                <div class="icon">🛡</div>
+                <h3>Подушка безопасности</h3>
+                <p>Рассчитаем, на сколько месяцев хватит накоплений при потере дохода.</p>
+              </div>
+
+              <div class="tile">
+                <div class="icon">🧭</div>
+                <h3>План стабилизации</h3>
+                <p>Подскажем, какие шаги помогут сократить финансовую нагрузку и навести порядок в бюджете.</p>
+              </div>
+            </div>
+
+            <div class="list-links">
+              <div>Индекс финансовой устойчивости</div>
+              <div>Анализ регулярных расходов</div>
+              <div>Доходы, депозиты и обязательные платежи</div>
+            </div>
+          </div>
+
+          <div class="photo-panel" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="industries">
+      <div class="wrap">
+        <div class="industries-grid">
+          <div>
+            <div class="section-kicker">Для кого</div>
+          </div>
+
+          <div class="industries-col">
+            <div>Люди с 1–3 кредитами и несколькими обязательными платежами</div>
+            <div>Пользователи без понятной финансовой подушки</div>
+            <div>Те, кто хочет увидеть реальную долговую нагрузку</div>
+            <div>Люди с финансовой тревогой в конце месяца</div>
+          </div>
+
+          <div class="industries-col">
+            <div>Подготовка к ипотеке или крупной покупке</div>
+            <div>Проверка устойчивости бюджета перед новым кредитом</div>
+            <div>Контроль регулярных расходов и “утечек” денег</div>
+            <div>Получение понятного финансового плана без таблиц</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <div class="section-kicker">Как это работает</div>
+        <h2 class="section-title">Путь от цифр к понятному решению</h2>
+        <p class="section-sub">
+          Мы проверяем главный сценарий MVP: пользователь вводит данные и быстро получает полезную диагностику.
+        </p>
+
+        <div class="how">
+          <div class="step">
+            <div class="n">1</div>
+            <h4>Добавьте доходы</h4>
+            <p>Зарплата, подработки, депозиты и другие источники дохода в одной картине.</p>
+          </div>
+
+          <div class="step">
+            <div class="n">2</div>
+            <h4>Укажите обязательства</h4>
+            <p>Кредиты, рассрочки, коммунальные платежи и другие обязательные расходы.</p>
+          </div>
+
+          <div class="step">
+            <div class="n">3</div>
+            <h4>Отметьте регулярные траты</h4>
+            <p>Транспорт, еда, подписки и повседневные расходы, которые влияют на устойчивость.</p>
+          </div>
+
+          <div class="step">
+            <div class="n">4</div>
+            <h4>Получите разбор</h4>
+            <p>Индекс устойчивости, подушка безопасности и рекомендации, что делать дальше.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="proof">
+          <div class="quote">
+            <h2 style="margin:0 0 10px; font-size:34px; line-height:1.05; letter-spacing:-1px;">Для кого это особенно полезно</h2>
+            <p>
+              Для работающих людей, у которых есть кредиты, регулярные платежи и ощущение,
+              что деньги расходятся быстрее, чем хотелось бы. Продукт помогает быстро увидеть
+              честную картину и понять следующий шаг.
+            </p>
+            <div class="kpi">
+              <span class="badge">Простой язык</span>
+              <span class="badge">Понятные проценты</span>
+              <span class="badge">Без сложных таблиц</span>
+            </div>
+          </div>
+
+          <div class="quote">
+            <p>«Я хочу увидеть честную картину: сколько реально могу тратить и что закрывать первым, чтобы выдохнуть.»</p>
+            <div class="who">
+              <div class="avatar" aria-hidden="true"></div>
+              <div>
+                Пользователь MVP<br>
+                <span style="color:var(--muted); font-weight:400; font-size:13px;">формат обратной связи</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-kicker">FAQ</div>
+        <h2 class="section-title">Частые вопросы</h2>
+        <p class="section-sub">Коротко о том, что обычно спрашивают перед тестом.</p>
+
+        <div style="display:grid; gap:10px;">
+          <details>
+            <summary>Это банк? Вы видите мои счета?</summary>
+            <p>Нет. На MVP вы вводите данные вручную. Они используются только для расчёта метрик и связи по тесту.</p>
+          </details>
+
+          <details>
+            <summary>Сколько времени занимает ввод?</summary>
+            <p>Обычно 2–7 минут: доходы, обязательные платежи, кредиты, рассрочки и регулярные траты.</p>
+          </details>
+
+          <details>
+            <summary>Будет ли рекомендация или просто таблица?</summary>
+            <p>Цель — не таблица, а понятный вывод: индекс устойчивости, подушка безопасности и список действий на месяц.</p>
+          </details>
+
+          <details>
+            <summary>Какая модель монетизации?</summary>
+            <p>Проверяем freemium: базовая диагностика бесплатно, расширенный план и сценарии — платно.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="final-cta">
+          <div style="display:flex; gap:16px; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+            <div>
+              <h2 style="margin:0 0 8px; font-size:40px; line-height:1.05; letter-spacing:-1.2px;">
+                Проверьте свою финансовую устойчивость за 2 минуты
+              </h2>
+              <div style="color:var(--muted); font-size:16px;">
+                Оставьте контакт — пришлём доступ к MVP и поможем разобраться в вашей ситуации.
+              </div>
+            </div>
+
+            <a class="btn primary"
+               href="https://t.me/OxanaMikhaylova"
+               target="_blank"
+               onclick="ym(107207334,'reachGoal','telegram_click_cta')">
+               Написать в Telegram
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="row">
+          <div>© <span id="year"></span> FinAI • MVP для проверки гипотезы</div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a href="#" onclick="track('open_terms'); return false;">Условия</a>
+            <a href="#" onclick="track('open_privacy_footer'); return false;">Политика</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    function track(event, props = {}) {
+      const payload = {
+        event,
+        props,
+        ts: new Date().toISOString(),
+        path: location.pathname + location.hash
+      };
+      console.log("[track]", payload);
+
+      const key = "finai_events";
+      const arr = JSON.parse(localStorage.getItem(key) || "[]");
+      arr.push(payload);
+      localStorage.setItem(key, JSON.stringify(arr));
+    }
+
+    function scrollToLead(){
+      track("click_cta_scroll");
+      document.getElementById("lead").scrollIntoView({behavior:"smooth", block:"start"});
+      document.getElementById("name").focus({preventScroll:true});
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const form = document.getElementById("leadForm");
+    const statusEl = document.getElementById("formStatus");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      track("lead_submit", {
+        credits: data.credits,
+        currency: data.currency,
+        goal: data.goal,
+        has_note: !!(data.note && data.note.trim().length > 0)
+      });
+
+      ym(107207334, 'reachGoal', 'lead_submit');
+
+      // Здесь можно подключить отправку в CRM или backend
+      // await fetch("https://YOUR-ENDPOINT.com/leads", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(data)
+      // });
+
+      statusEl.textContent = "Спасибо! Заявка принята. Мы свяжемся с вами для доступа к тесту.";
+      form.reset();
+    });
+
+    let depth25=false, depth50=false, depth75=false;
+    window.addEventListener("scroll", () => {
+      const h = document.documentElement;
+      const sc = (h.scrollTop || document.body.scrollTop);
+      const max = (h.scrollHeight - h.clientHeight);
+      const p = max > 0 ? (sc / max) : 0;
+
+      if (!depth25 && p > 0.25) {
+        depth25 = true;
+        track("scroll_25");
+        ym(107207334, 'reachGoal', 'scroll_25');
+      }
+      if (!depth50 && p > 0.50) {
+        depth50 = true;
+        track("scroll_50");
+        ym(107207334, 'reachGoal', 'scroll_50');
+      }
+      if (!depth75 && p > 0.75) {
+        depth75 = true;
+        track("scroll_75");
+        ym(107207334, 'reachGoal', 'scroll_75');
+      }
+    });
+  </script>
+</body>
+</html>
