@@ -630,9 +630,7 @@
         <div class="brand" role="banner">
           <div class="logo" aria-hidden="true"></div>
           <div>
-            <div style="font-size:14px; opacity:.95;">FinAI</div>
-            <div style="font-size:12px; color:rgba(255,255,255,.72); font-weight:600;">финансовый AI помощник</div>
-          </div>
+           </div>
         </div>
 
         <nav class="nav" aria-label="Навигация">
@@ -849,8 +847,6 @@
       <div class="wrap">
         <div class="section-kicker">Как это работает</div>
         <h2 class="section-title">Путь от цифр к понятному решению</h2>
-        <p class="section-sub">
-          Мы проверяем главный сценарий MVP: пользователь вводит данные и быстро получает полезную диагностику.
         </p>
 
         <div class="how">
@@ -969,8 +965,7 @@
     <footer class="footer">
       <div class="wrap">
         <div class="row">
-          <div>© <span id="year"></span> FinAI • MVP для проверки гипотезы</div>
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+         <div style="display:flex; gap:10px; flex-wrap:wrap;">
             <a href="#" onclick="track('open_terms'); return false;">Условия</a>
             <a href="#" onclick="track('open_privacy_footer'); return false;">Политика</a>
           </div>
