@@ -847,7 +847,7 @@
       <div class="wrap">
         <div class="section-kicker">Как это работает</div>
         <h2 class="section-title">Путь от цифр к понятному решению</h2>
-        </p>
+        
 
         <div class="how">
           <div class="step">
