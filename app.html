@@ -37,7 +37,7 @@
 <div class="modalbg" id="modal"><section class="modal"><div class="modalhead"><h2 id="modalTitle"></h2><button class="close" id="close" type="button" aria-label="Закрыть">×</button></div><form id="modalForm"><div class="form" id="modalFields"></div><div class="actions"><button class="btn" type="button" id="cancel">Отмена</button><button class="btn primary" id="submitBtn" type="submit">Сохранить</button></div></form></section></div>
 <div class="toast" id="toast"></div>
 <script>
-const KEY="ai-finance-document-v3";
+const KEY="ai-finance-document-v4";
 const C={
   KZT:{n:"Казахстанский тенге",s:"₸",k:1,l:"ru-KZ"},
   RUB:{n:"Российский рубль",s:"₽",k:.18,l:"ru-RU"},
@@ -49,23 +49,14 @@ const C={
 };
 const categories=["Жилье","Продукты","Транспорт","Связь","Кафе","Доставка","Подписка","Доход","Другое"];
 const seed={
-  schemaVersion:3,name:"Личные финансы 2026",currency:"KZT",accounts:{card:420000,cash:75000},savings:2850000,
-  transactions:[
-    {id:1,type:"income",title:"Зарплата",amount:1250000,category:"Доход",date:"2026-06-01"},
-    {id:2,type:"income",title:"Арендный доход",amount:280000,category:"Доход",date:"2026-06-03"},
-    {id:3,type:"expense",title:"Аренда квартиры",amount:320000,category:"Жилье",date:"2026-06-02"},
-    {id:4,type:"expense",title:"Продукты",amount:148000.50,category:"Продукты",date:"2026-06-04"},
-    {id:5,type:"expense",title:"Коммунальные услуги",amount:68000,category:"Жилье",date:"2026-06-05"},
-    {id:6,type:"expense",title:"Транспорт",amount:72000,category:"Транспорт",date:"2026-06-06"}
-  ],
-  obligations:[
-    {id:11,type:"credit",title:"Потребительский кредит",payment:185000,debt:1850000,total:2400000,next:"2026-06-15"},
-    {id:12,type:"installment",title:"Рассрочка на технику",payment:74000,debt:444000,total:888000,next:"2026-06-20"}
-  ],
-  deposits:[
-    {id:21,title:"Резерв",bank:"Народный банк",amount:2350000,rate:14.5,currency:"KZT",end:"2027-03-01"},
-    {id:22,title:"Евро-сбережения",bank:"Local Bank",amount:850.25,rate:2.1,currency:"EUR",end:"2026-12-20"}
-  ]
+  schemaVersion:3,
+  name:"Мои финансы",
+  currency:"KZT",
+  accounts:{card:0,cash:0},
+  savings:0,
+  transactions:[],
+  obligations:[],
+  deposits:[]
 };
 let data,view="overview",modalSubmit=null;
 const root=document.querySelector("#root"),modal=document.querySelector("#modal");
