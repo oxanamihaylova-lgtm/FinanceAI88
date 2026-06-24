@@ -59,13 +59,17 @@ ym(107207334,"init",{
 <script>
 const METRIKA_ID=107207334;
 const REGISTRATION_COMPLETE_KEY="finai-registration-complete";
-function metrikaGoal(goal,params={}){
-  if(typeof ym==="function")ym(METRIKA_ID,"reachGoal",goal,params);
+function metrikaGoal(goal,params={},callback){
+  console.info("[Metrika goal]",goal,params);
+  if(typeof ym==="function"){
+    ym(METRIKA_ID,"reachGoal",goal,params,callback);
+  }
 }
 function completeRegistrationOnce(source){
   if(localStorage.getItem(REGISTRATION_COMPLETE_KEY))return;
-  localStorage.setItem(REGISTRATION_COMPLETE_KEY,"1");
-  metrikaGoal("registration_complete",{source});
+  metrikaGoal("registration_complete",{source},()=>{
+    localStorage.setItem(REGISTRATION_COMPLETE_KEY,"1");
+  });
 }
 metrikaGoal("registration_start",{source:"app_open"});
 
