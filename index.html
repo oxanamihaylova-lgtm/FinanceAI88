@@ -254,7 +254,8 @@
               <h2 style="margin:0 0 8px; font-size:40px; line-height:1.05; letter-spacing:-1.2px;">Получите доступ к приложению</h2>
               <div style="color:var(--muted); font-size:16px;">Заполните короткую форму и перейдите к тестированию финансового AI помощника.</div>
             </div>
-            <button class="btn primary" onclick="scrollToLead('final_cta');">Получить доступ</button>
+            <button class="btn primary"
+onclick="ym(110113733,'reachGoal','final_cta_click'); scrollToLead();">Получить доступ</button>
           </div>
         </div>
       </div>
@@ -291,9 +292,11 @@
 
     form.addEventListener("submit", function(e) {
       e.preventDefault();
+      ym(110113733, 'reachGoal', 'click_try_service');
       statusEl.textContent = "Спасибо! Перенаправляем вас в приложение...";
 
       setTimeout(function() {
+        ym(110113733, 'reachGoal', 'app_open');
         window.location.href = APP_URL;
       }, 1000);
     });
