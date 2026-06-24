@@ -100,6 +100,26 @@
     .footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     @media(max-width:1080px){.hero-grid,.planning-grid,.industries-grid,.proof,.services-head{grid-template-columns:1fr}.form-card{max-width:100%;margin-left:0}.cards-row{grid-template-columns:1fr}.tile{border-right:none;border-bottom:1px solid var(--olive2);min-height:auto}.tile:last-child{border-bottom:none}.how{grid-template-columns:1fr 1fr}.services-note{text-align:left}.abstract-panel{min-height:360px;clip-path:none}}
     @media(max-width:760px){.nav{display:none}.top-actions .btn.ghost{display:none}.hero{min-height:auto}.hero-inner{padding:56px 0 42px}.how{grid-template-columns:1fr}section{padding:64px 0}.wrap{padding:0 18px}h1{font-size:42px}.section-title{font-size:34px}.hero:before{width:300px;height:300px;right:-80px;top:50px}.hero:after{display:none}}
+  .birth-date {
+  display: grid;
+  grid-template-columns: 0.7fr 1.4fr 1fr;
+  gap: 10px;
+}
+
+.birth-date select {
+  width: 100%;
+  min-height: 54px;
+  padding: 0 14px;
+  border: 1px solid #d8ddd9;
+  background: white;
+  font: inherit;
+}
+
+@media (max-width: 520px) {
+  .birth-date {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
   <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -117,6 +137,53 @@
 </head>
 
 <body>
+  <script>
+const birthDay = document.querySelector("#birthDay");
+const birthMonth = document.querySelector("#birthMonth");
+const birthYear = document.querySelector("#birthYear");
+const birthdate = document.querySelector("#birthdate");
+
+const currentYear = new Date().getFullYear();
+
+for (let year = currentYear; year >= 1930; year--) {
+  birthYear.add(new Option(year, year));
+}
+
+function updateBirthDays() {
+  const selectedDay = birthDay.value;
+  const month = Number(birthMonth.value);
+  const year = Number(birthYear.value) || currentYear;
+  const days = month ? new Date(year, month, 0).getDate() : 31;
+
+  birthDay.innerHTML = '<option value="">День</option>';
+
+  for (let day = 1; day <= days; day++) {
+    const value = String(day).padStart(2, "0");
+    birthDay.add(new Option(day, value));
+  }
+
+  if (Number(selectedDay) <= days) {
+    birthDay.value = selectedDay;
+  }
+
+  updateBirthdate();
+}
+
+function updateBirthdate() {
+  if (birthDay.value && birthMonth.value && birthYear.value) {
+    birthdate.value =
+      `${birthYear.value}-${birthMonth.value}-${birthDay.value}`;
+  } else {
+    birthdate.value = "";
+  }
+}
+
+birthDay.addEventListener("change", updateBirthdate);
+birthMonth.addEventListener("change", updateBirthDays);
+birthYear.addEventListener("change", updateBirthDays);
+
+updateBirthDays();
+</script>
   <header class="top">
     <div class="wrap">
       <div class="row">
@@ -170,8 +237,35 @@
                 <option value="male">Мужской</option>
               </select>
 
-              <label for="birthdate">Дата рождения</label>
-              <input type="date" id="birthdate" name="birthdate" required />
+              <label>Дата рождения</label>
+
+<div class="birth-date">
+  <select id="birthDay" required>
+    <option value="">День</option>
+  </select>
+
+  <select id="birthMonth" required>
+    <option value="">Месяц</option>
+    <option value="01">Январь</option>
+    <option value="02">Февраль</option>
+    <option value="03">Март</option>
+    <option value="04">Апрель</option>
+    <option value="05">Май</option>
+    <option value="06">Июнь</option>
+    <option value="07">Июль</option>
+    <option value="08">Август</option>
+    <option value="09">Сентябрь</option>
+    <option value="10">Октябрь</option>
+    <option value="11">Ноябрь</option>
+    <option value="12">Декабрь</option>
+  </select>
+
+  <select id="birthYear" required>
+    <option value="">Год</option>
+  </select>
+
+  <input type="hidden" id="birthdate" name="birthdate">
+</div>
 
               <label for="country">Страна проживания</label>
               <select id="country" name="country" required>
