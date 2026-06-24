@@ -9,6 +9,26 @@
   <meta property="og:description" content="Индекс устойчивости, долговая нагрузка, подушка безопасности и план выхода в стабильность." />
   <meta property="og:type" content="website" />
 
+  <!-- Yandex.Metrika counter -->
+  <script>
+    (function(m,e,t,r,i,k,a){
+      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j=0;j<document.scripts.length;j++) {
+        if (document.scripts[j].src===r) return;
+      }
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a);
+    })(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+
+    ym(107207334, "init", {
+      clickmap:true,
+      trackLinks:true,
+      accurateTrackBounce:true,
+      webvisor:true
+    });
+  </script>
+  <!-- /Yandex.Metrika counter -->
+
  
   <style>
     :root{
@@ -104,6 +124,11 @@
 </head>
 
 <body>
+  <noscript>
+    <div>
+      <img src="https://mc.yandex.ru/watch/107207334" style="position:absolute; left:-9999px;" alt="" />
+    </div>
+  </noscript>
   <header class="top">
     <div class="wrap">
       <div class="row">
@@ -273,10 +298,30 @@
       localStorage.setItem(key, JSON.stringify(arr));
     }
 
-    function safeYmReachGoal(goalName) {
+    function safeYmReachGoal(goalName, params = {}) {
       if (typeof ym === "function") {
-        ym(107207334, "reachGoal", goalName);
+        ym(107207334, "reachGoal", goalName, params);
       }
+    }
+
+    function getAgeGroup(birthdate) {
+      if (!birthdate) return "unknown";
+
+      const birth = new Date(birthdate + "T00:00:00");
+      const today = new Date();
+      let age = today.getFullYear() - birth.getFullYear();
+      const birthdayPassed =
+        today.getMonth() > birth.getMonth() ||
+        (today.getMonth() === birth.getMonth() && today.getDate() >= birth.getDate());
+
+      if (!birthdayPassed) age -= 1;
+      if (age < 18) return "under_18";
+      if (age <= 24) return "18_24";
+      if (age <= 34) return "25_34";
+      if (age <= 44) return "35_44";
+      if (age <= 54) return "45_54";
+      if (age <= 64) return "55_64";
+      return "65_plus";
     }
 
     function scrollToLead(){
@@ -295,16 +340,22 @@
       e.preventDefault();
 
       const data = Object.fromEntries(new FormData(form).entries());
+      const audience = {
+        country: data.country,
+        age_group: getAgeGroup(data.birthdate),
+        gender: data.gender
+      };
 
       track("get_access_submit", {
         name_filled: Boolean(data.name),
-        gender: data.gender,
         birthdate_filled: Boolean(data.birthdate),
-        country: data.country
+        ...audience
       });
 
-      safeYmReachGoal("get_access");
-      safeYmReachGoal("lead_submit");
+      if (typeof ym === "function") {
+        ym(107207334, "userParams", audience);
+      }
+      safeYmReachGoal("lead_submit", audience);
 
       statusEl.textContent = "Спасибо! Перенаправляем вас в приложение...";
 
